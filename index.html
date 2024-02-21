@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Login & Registration For Simple Quiz</title>
+</head>
+<style>
+    .valid {
+        display: none;
+        color: red;
+        font-size: 14px;
+    }
+</style>
+
+<body>
+    <div class="wrapper">
+        <nav class="nav">
+            <div class="nav-logo">
+                <p>Simple Quiz</p>
+            </div>
+            <div class="nav-button">
+                <button class="btn white-btn" id="loginBtn" onclick="login()">Sign In</button>
+                <button class="btn" id="registerBtn" onclick="register()">Sign Up</button>
+            </div>
+            <div class="nav-menu-btn">
+                <i class="bx bx-menu" onclick="myMenuFunction()"></i>
+            </div>
+        </nav>
+
+        <!----------------------------- Form box ----------------------------------->
+        <div class="form-box">
+
+            <!------------------- login form -------------------------->
+
+            <div class="login-container" id="login">
+                <div class="top">
+                    <span>Don't have an account? <a href="#" onclick="register()">Sign Up</a></span>
+                    <header>Login</header>
+                </div>
+                <div class="input-box">
+                    <input type="text" class="input-field" placeholder="Username or Email" id="email">
+                    <i class="bx bx-user"></i><label for="" class="valid" id="eml">please enter valid username or email</label>
+                </div>
+                <div class="input-box">
+                    <input type="password" class="input-field" placeholder="Password" id="password">
+                    <i class="bx bx-lock-alt"></i><label for="" class="valid" id="psd">please enter valid
+                        password</label>
+                </div>
+                <div class="input-box">
+                    <button type="button" class="submit" id="btn">Sign In</button>
+                </div>
+                <div class="two-col">
+                    <div class="one">
+                        <input type="checkbox" id="login-check">
+                        <label for="login-check"> Remember Me</label>
+                    </div>
+                    <div class="two">
+                        <label><a href="#">Forgot password?</a></label>
+                    </div>
+                </div>
+            </div>
+
+            <!------------------- registration form -------------------------->
+            <div class="register-container" id="register">
+                <div class="top">
+                    <span>Have an account? <a href="#" onclick="login()">Login</a></span>
+                    <header>Sign Up</header>
+                </div>
+                <div class="two-forms">
+                    <div class="input-box">
+                        <input type="text" class="input-field" placeholder="Firstname" id="firstname">
+                        <i class="bx bx-user"></i><label for="" class="valid" id="fst">What's your name?</label>
+                    </div>
+                    <div class="input-box">
+                        <input type="text" class="input-field" placeholder="Lastname" id="lastname">
+                        <i class="bx bx-user"></i><label for="" class="valid" id="lst">What's your name?</label>
+                    </div>
+                </div>
+                <div class="input-box">
+                    <input type="text" class="input-field" placeholder="Email" id="emaill">
+                    <i class="bx bx-envelope"></i><label for="" class="valid" id="emll">please enter valid email</label>
+                </div>
+                <div class="input-box">
+                    <input type="password" class="input-field" placeholder="Password" id="passwordd">
+                    <i class="bx bx-lock-alt"></i><label for="" class="valid" id="psdd">please enter valid
+                        password</label>
+                </div>
+                <div class="input-box">
+                    <button type="button" class="submit" id="btnn">Register</button>
+                </div>
+                <div class="two-col">
+                    <div class="one">
+                        <input type="checkbox" id="register-check">
+                        <label for="register-check"> Remember Me</label>
+                    </div>
+                    <div class="two">
+                        <label><a href="#">Terms & conditions</a></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+
+        function myMenuFunction() {
+            var i = document.getElementById("navMenu");
+
+            if (i.className === "nav-menu") {
+                i.className += " responsive";
+            } else {
+                i.className = "nav-menu";
+            }
+        }
+
+    </script>
+
+    <script>
+
+        var a = document.getElementById("loginBtn");
+        var b = document.getElementById("registerBtn");
+        var x = document.getElementById("login");
+        var y = document.getElementById("register");
+
+        function login() {
+            x.style.left = "4px";
+            y.style.right = "-520px";
+            a.className += " white-btn";
+            b.className = "btn";
+            x.style.opacity = 1;
+            y.style.opacity = 0;
+        }
+
+        function register() {
+            x.style.left = "-510px";
+            y.style.right = "5px";
+            a.className = "btn";
+            b.className += " white-btn";
+            x.style.opacity = 0;
+            y.style.opacity = 1;
+        }
+        $(document).ready(function () {
+            $("#email").blur(function () {
+                let text = $(this).val()
+                if (text.length < 6) {
+                    $("#eml").show()
+                } else {
+                    $("#eml").hide()
+                }
+            });
+
+            $("#password").blur(function () {
+                let text = $(this).val()
+                if (text.length < 8) {
+                    $("#psd").show()
+                } else {
+                    $("#psd").hide()
+                }
+            })
+
+
+            $("#btn").click(function () {
+                let eml = $("#email").val()
+                let psd = $("#password").val()
+
+                if (eml.length < 6) {
+                    $("#eml").show()
+                } else {
+                    $("#eml").hide()
+                }
+
+                if (psd.length < 8) {
+                    $("#psd").show()
+                } else {
+                    $("#psd").hide()
+                }
+
+                if (eml.length > 6 && psd.length > 6) {
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Your data has been saved",
+
+                    })
+                        .then(() => {
+                            window.location.href = "https://saabeee-quiz-app.vercel.app/";
+                        });
+                }
+            })
+        })
+
+        $(document).ready(function () {
+            $("#firstname").blur(function () {
+                let text = $(this).val()
+                if (text.length < 6) {
+                    $("#fst").show()
+                } else {
+                    $("#fst").hide()
+                }
+            });
+
+            $("#lastname").blur(function () {
+                let text = $(this).val()
+                if (text.length < 8) {
+                    $("#lst").show()
+                } else {
+                    $("#lst").hide()
+                }
+            })
+
+            $("#emaill").blur(function () {
+                let text = $(this).val()
+                if (text.length < 6) {
+                    $("#emll").show()
+                } else {
+                    $("#emll").hide()
+                }
+            });
+
+            $("#passwordd").blur(function () {
+                let text = $(this).val()
+                if (text.length < 8) {
+                    $("#psdd").show()
+                } else {
+                    $("#psdd").hide()
+                }
+            })
+
+
+
+            $("#btnn").click(function () {
+                let fst = $("#firstname").val()
+                let lst = $("#lastname").val()
+                let emll = $("#emaill").val()
+                let psdd = $("#passwordd").val()
+
+                if (fst.length < 6) {
+                    $("#fst").show()
+                } else {
+                    $("#fst").hide()
+                }
+
+                if (lst.length < 8) {
+                    $("#lst").show()
+                } else {
+                    $("#lst").hide()
+                }
+
+                if (emll.length < 6) {
+                    $("#emll").show()
+                } else {
+                    $("#emll").hide()
+                }
+
+                if (psdd.length < 8) {
+                    $("#psdd").show()
+                } else {
+                    $("#psdd").hide()
+                }
+
+
+
+                if (fst.length > 1 && lst.length > 1 && emll.length > 6 && psdd.length > 6) {
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Your data has been saved",
+
+                    })
+                        .then(() => {
+                            window.location.href = "https://saabeee-quiz-app.vercel.app/";
+                        });
+                }
+            })
+        })
+
+
+
+    </script>
+
+</body>
+
+</html>
