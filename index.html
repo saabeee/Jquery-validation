@@ -200,7 +200,7 @@
         $(document).ready(function () {
             $("#firstname").blur(function () {
                 let text = $(this).val()
-                if (text.length < 6) {
+                if (text.length < 1) {
                     $("#fst").show()
                 } else {
                     $("#fst").hide()
@@ -209,7 +209,7 @@
 
             $("#lastname").blur(function () {
                 let text = $(this).val()
-                if (text.length < 8) {
+                if (text.length < 1) {
                     $("#lst").show()
                 } else {
                     $("#lst").hide()
